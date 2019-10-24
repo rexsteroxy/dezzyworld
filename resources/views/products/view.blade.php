@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 <style type="text/css">
  .avatar{
      border-radius:100%;
@@ -7,8 +8,8 @@
 </style>
 @section('content')
 <div class="container"> 
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+    <div class="row"> 
+    
         @if(count($errors) > 0)
                     @foreach($errors->all as $error)
                         <div class="alert alert-danger"><li>{{$error}}</li></div>
@@ -25,8 +26,8 @@
                     <div class="col-md-4">  
                         Dashboard
                      </div>
-                     <div class="col-md-8">
-                     <form  method="POST" action='{{ url("/search") }}'
+                     <div class="col-md-4">
+                     <form  method="POST" action=''
                          enctype = "multipart/form-data" >
                         {{ csrf_field() }}
 
@@ -45,56 +46,59 @@
                 </div>
 
                 <div class="panel-body">
-               @if(!empty($profile))
-               <div class="col-md-4">
-                    <img src="{{ $profile->profile_image }}" 
+              
+               <!-- <div class="col-md-3">
+                    <img src="" 
                     class="avatar" alt=""> 
-                   <p class="lead">{{$profile->firstname}}</p>
-                   <p class="lead">{{$profile->email}}</p>
-                </div>
-               @else
-                <div class="col-md-4">
-                    <img src="{{ url('img/author.jpg')}}" 
+                   <p class="lead"></p>
+                   <p class="lead"></p>
+                </div> -->
+              
+                <div class="col-md-2">
+                    <img src="images/black5.jpg" 
                     class="avatar" alt=""> 
                   
                 </div>
-                @endif
-                <div class="col-md-8">
+               
+                <div class="col-md-9">
+               
+
                 @if(count($products) > 0)
 
                 @foreach($products->all() as $product)
-                    <h1>{{$product->title}}</h1>
+                <div class="row">
+                <div ></div>
+                <h1>{{$product->product_title}}</h1>
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">Product Title</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Size</th>
+                            <th scope="col">Price Per Quantity</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>{{$product->title}}</td>
+                            <td>{{ $product->description }}</td>
+                            <td>{{ $product->size }}</td>
+                            <td>{{ $product->price }}</td>
+                            
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
                     
-                    <img src="{{$product->image}}" alt="" width="60%">
-                    
-                    <p>Price: <strike>N</strike> {{ $product->price }}</p>
-                    <ul class="nav nav-pills">
-                        <li role="presentation">
-                            <a href='{{ url("/view/{$product->id}") }}'>
-                                <span class="fa fa-eye">View</span>
-                            </a>
-                        </li>
-                        <li role="presentation">
-                            <a href='{{ url("/edit/{$product->id}") }}'>
-                                <span class="fa fa-pencil-square-o">Edit</span>
-                            </a>
-                        </li>
-                        <li role="presentation">
-                            <a href='{{ url("/delete/{$product->id}") }}'>
-                                <span class="fa fa-trash">Delete</span>
-                            </a>
-                        </li>
-                        
-                    </ul>
-                    <cite style="float:left">Posted On: {{date('M j, Y h:i', strtotime($product->updated_at))}}</cite>
+                
+                    <cite style="float:left">Uploaded On: {{date('M j, Y h:i', strtotime($product->updated_at))}}</cite>
                     <hr>
                 @endforeach
                 @else
-                <h2>NO POST AVAILABLE</h2>
+                <h2>NO product POST AVAILABLE</h2>
 
                 @endif
-                {{$products->links()}}
-                </div>
+                
                     
                 </div>
             </div>
@@ -102,3 +106,29 @@
     </div>
 </div>
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

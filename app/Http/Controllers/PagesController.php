@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use App\Job;
+use App\Product;
 
 class PagesController extends Controller
 {
@@ -14,17 +14,5 @@ class PagesController extends Controller
     	return view('index');
     }
    
-    public function getAboutPage()
-    {
-        return view('about');
-    }
-    public function getContactPage()
-    {
-        return view('contact');
-    }
-    public function getAdminDashBoard()
-    {
-        return view('admin.index');
-    }
     
 }

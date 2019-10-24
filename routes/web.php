@@ -14,7 +14,7 @@
 //Routes for the getting the whole web pages on view root folder
 
 Route::get('/', 'PagesController@getHome');
-Route::get('/admin', 'PagesController@getAdminDashBoard');
+
 
 //Route for the application page
 
@@ -37,6 +37,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Routes for the product pages
 Route::get('/product','ProductsController@create');
+Route::get('/view/{job_id}','ProductsController@show');
 Route::post('/addproduct','ProductsController@store')->name('admin.addproduct');
 
 

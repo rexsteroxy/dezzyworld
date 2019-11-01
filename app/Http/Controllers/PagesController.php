@@ -10,9 +10,13 @@ class PagesController extends Controller
 {
     
     public function getHome(){ 
-
-    	return view('index');
+        $products = Product::paginate(6);
+        return view('index',compact('products'));
     }
-   
+    public function show($product_id)
+    {
+        $products =Product::where('id', '=', $product_id)->get();
+        return view('productsview',compact('products'));
+    }
     
 }

@@ -37,8 +37,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Routes for the product pages
 Route::get('/product','ProductsController@create');
-Route::get('/view/{job_id}','ProductsController@show');
+Route::get('/view/{product_id}','ProductsController@show');
 Route::post('/addproduct','ProductsController@store')->name('admin.addproduct');
+Route::get('/product_view/{product_id}','PagesController@show');
 
 
 
